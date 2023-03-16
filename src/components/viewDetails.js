@@ -10,6 +10,7 @@ const Detail = () => {
 
   useEffect(() => {
     dispatch(fetchDetail({ lat, lon }));
+    // eslint-disable-next-line
   }, []);
 
   if (!details) {

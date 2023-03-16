@@ -9,32 +9,32 @@ import Detail from './components/viewDetails';
 describe('App renders correctly', () => {
   test('Home page renders correctly', () => {
     const tree = render(
-        <BrowserRouter>
-          <Provider store={store}>
-            <App />
-          </Provider>
-        </BrowserRouter>,
-      );
+      <BrowserRouter>
+        <Provider store={store}>
+          <App />
+        </Provider>
+      </BrowserRouter>,
+    );
     expect(tree).toMatchSnapshot();
   });
   test('Navbar renders correctly', () => {
     const tree = render(
-        <BrowserRouter>
-          <Provider store={store}>
-            <Navbar />
-          </Provider>
-        </BrowserRouter>,
-      );
+      <BrowserRouter>
+        <Provider store={store}>
+          <Navbar />
+        </Provider>
+      </BrowserRouter>,
+    );
     expect(tree).toMatchSnapshot();
   });
   test('City details page renders correctly', () => {
     const tree = render(
-        <BrowserRouter>
-          <Provider store={store}>
-            <Detail />
-          </Provider>
-        </BrowserRouter>,
-      );
+      <BrowserRouter>
+        <Provider store={store}>
+          <Detail />
+        </Provider>
+      </BrowserRouter>,
+    );
     expect(tree).toMatchSnapshot();
   });
 });
