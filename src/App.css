@@ -85,7 +85,17 @@ section .city .city-info .coordinate {
   margin-top: 2px;
 }
 
-/* detail */
+.map-arrow {
+  display: flex;
+  flex-direction: row;
+  width: 100%;
+  justify-content: space-between;
+}
+
+.right-arrow {
+  padding: 5px;
+}
+
 .detail {
   width: 97%;
   margin: 10px auto;

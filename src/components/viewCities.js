@@ -1,4 +1,5 @@
 import { Link } from 'react-router-dom';
+import { BsArrowRightCircle } from 'react-icons/bs';
 
 const citiesData = [
   {
@@ -83,7 +84,10 @@ const City = () => (
         }}
       >
         <div className="city">
-          <img src={city.img} alt="country-map" />
+          <div className="map-arrow">
+            <img src={city.img} alt="city-map" />
+            <span className="right-arrow"><BsArrowRightCircle /></span>
+          </div>
           <div className="city-info">
             <h2>{city.name}</h2>
             <p className="coordinate">
@@ -91,7 +95,7 @@ const City = () => (
               <span>{city.lat}</span>
             </p>
             <p className="coordinate">
-              <span>Long: </span>
+              <span>Lon: </span>
               <span>{city.lon}</span>
             </p>
           </div>
