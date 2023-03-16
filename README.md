@@ -214,7 +214,7 @@ If you like this project then please do follow me and give a star to this repo.
 
 ## 🙏 Acknowledgments <a name="acknowledgements"></a>
 
-Original design idea by (Nelson Sakwa on Behance)[https://www.behance.net/sakwadesignstudio]. And the licencse to use is (Creative Commons license of the design)[https://creativecommons.org/licenses/by-nc/4.0/].
+Original design idea by (Nelson Sakwa on Behance)[https://www.behance.net/sakwadesignstudio]. And the license to use is (Creative Commons license of the design)[https://creativecommons.org/licenses/by-nc/4.0/].
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
