@@ -15,8 +15,8 @@ const Navbar = () => {
         2023
       </p>
       {detailPage ? (
-        <p className="title">Town/City Views</p>
-      ) : <p className="title">most views</p>}
+        <p className="title">City Details</p>
+      ) : <p className="title">Cities</p>}
 
       <p className="icon">
         <span><FaMicrophone /></span>

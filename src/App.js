@@ -1,8 +1,8 @@
 import './App.css';
 import { Routes, Route } from 'react-router-dom';
 import Layout from './components/layout';
-import City from './components/city';
-import Detail from './components/detail';
+import City from './components/viewCities';
+import Detail from './components/viewDetails';
 import NotMatch from './components/notMatch';
 
 function App() {

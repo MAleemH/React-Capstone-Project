@@ -83,7 +83,7 @@ const City = () => (
         }}
       >
         <div className="city">
-          <img src={city.img} alt="country map" />
+          <img src={city.img} alt="country-map" />
           <div className="city-info">
             <h2>{city.name}</h2>
             <p className="coordinate">
