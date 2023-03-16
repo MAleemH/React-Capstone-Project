@@ -1,27 +1,20 @@
-import logo from './logo.svg';
 import './App.css';
+import { Routes, Route } from 'react-router-dom';
+import Layout from './components/layout';
+import City from './components/viewCities';
+import Detail from './components/viewDetails';
+import NotMatch from './components/notMatch';
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit
-          {' '}
-          <code>src/App.js</code>
-          {' '}
-          and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div>
+      <Routes>
+        <Route path="/" element={<Layout />}>
+          <Route index element={<City />} />
+          <Route path="/detail/:name/:lat/:lon" element={<Detail />} />
+          <Route path="*" element={<NotMatch />} />
+        </Route>
+      </Routes>
     </div>
   );
 }
