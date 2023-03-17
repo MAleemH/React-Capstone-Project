@@ -1,19 +1,29 @@
-import { createSlice, createAsyncThunk } from '@reduxjs/toolkit';
+const apiCoin = 'https://api.coincap.io/v2/assets/';
 
-export const fetchDetail = createAsyncThunk('fetchDetail', async ({ lat, lon }) => {
-  const response = await fetch(`https://api.openweathermap.org/data/2.5/weather?lat=${lat}&lon=${lon}&appid=097fd047f72f00d9c172c861170a0b0d`);
-  const data = await response.json();
-  return data;
-});
+const GET_DETAIL = 'GET_DETAIL';
+const initialState = [{ id: 1, symbol: 'CrytoCoin' }];
 
-const detailsSlice = createSlice({
-  name: 'detail',
-  initialState: null,
-  reducers: {},
-  extraReducers: (builder) => {
-    builder
-      .addCase(fetchDetail.fulfilled, (state, action) => action.payload);
-  },
-});
+const fetchDetail = async (id) => {
+  const get = await fetch(apiCoin + id, { method: 'GET' });
+  const coins = await get.json();
+  return coins;
+};
 
-export default detailsSlice.reducer;
+export const coinDetail = (id) => async (dispatch) => {
+  const cDetail = await fetchDetail(id);
+  dispatch({
+    type: GET_DETAIL,
+    detail: cDetail.data,
+  });
+};
+
+const reducer = (state = initialState, action) => {
+  switch (action.type) {
+    case GET_DETAIL:
+      return action.detail;
+    default:
+      return state;
+  }
+};
+
+export default reducer;
