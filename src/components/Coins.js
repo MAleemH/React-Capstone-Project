@@ -46,7 +46,7 @@ const Coins = () => {
                 symbol={cryto.symbol}
                 price={cryto.priceUsd.substring(0, 8)}
               />
-          ))}
+            ))}
         </ul>
       </div>
     </section>
