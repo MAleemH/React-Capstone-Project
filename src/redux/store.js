@@ -1,10 +1,16 @@
+/* eslint-disable import/no-extraneous-dependencies */
+import { combineReducers } from 'redux';
 import { configureStore } from '@reduxjs/toolkit';
-import detailsSlice from './details/detailsSlice';
+import cryto from './coins/coinsSlice';
+import detail from './details/detailsSlice';
+
+const reducer = combineReducers({
+  cryto,
+  detail,
+});
 
 const store = configureStore({
-  reducer: {
-    details: detailsSlice,
-  },
+  reducer,
 });
 
 export default store;

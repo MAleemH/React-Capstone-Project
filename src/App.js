@@ -1,17 +1,18 @@
 import './App.css';
 import { Routes, Route } from 'react-router-dom';
 import Layout from './components/layout';
-import City from './components/viewCities';
-import Detail from './components/viewDetails';
+import Coins from './components/Coins';
+import Details from './components/Details';
 import NotMatch from './components/notMatch';
+import 'bootstrap/dist/css/bootstrap.min.css';
 
 function App() {
   return (
     <div>
       <Routes>
         <Route path="/" element={<Layout />}>
-          <Route index element={<City />} />
-          <Route path="/detail/:name/:lat/:lon" element={<Detail />} />
+          <Route index element={<Coins />} />
+          <Route path="/detail/:id" element={<Details />} />
           <Route path="*" element={<NotMatch />} />
         </Route>
       </Routes>
