@@ -76,3 +76,8 @@ header a:hover {
   padding-bottom: 2rem;
   color: #fff;
 }
+
+.search-field {
+  border: none;
+  width: 100%;
+}

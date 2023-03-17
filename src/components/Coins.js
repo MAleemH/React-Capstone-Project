@@ -1,45 +1,51 @@
 import React, { useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
-import { coinList, coinFilter } from '../redux/coins/coinsSlice';
+import { useSearchParams } from 'react-router-dom';
+import { coinList } from '../redux/coins/coinsSlice';
 import Coin from './Coin';
 
 const Coins = () => {
   const dispatch = useDispatch();
+  const [search, setSearch] = useSearchParams();
   const crytoList = useSelector((store) => store.cryto);
   useEffect(() => {
     dispatch(coinList());
   });
-  const changeHandler = (e) => {
-    dispatch(coinFilter(e.target.value));
-  };
-
-  const searchHandler = (e) => {
-    e.preventDefault();
-    window.location.href = `/detail/${e.target.coinSearch.value}`;
-  };
 
   return (
     <section>
-      <div className="infos d-none">
-        <select className="filter" onChange={changeHandler}>
-          <option value="price"> Rank </option>
-          <option value="name"> Name </option>
-          <option value="vol"> Price </option>
-        </select>
-        <form onSubmit={searchHandler}>
-          <input type="text" name="coinSearch" placeholder="Crypto cryto name" required />
-          <input type="submit" value="Search" />
-        </form>
+      <div>
+        <input
+          type="text"
+          className="search-field"
+          placeholder="Search Here"
+          value={search.get('filter') || ''}
+          onChange={(e) => {
+            const filter = e.target.value;
+            if (filter) {
+              setSearch({ filter });
+            } else {
+              setSearch({});
+            }
+          }}
+        />
       </div>
       <div>
         <ul className="d-grid mx-0 px-0 cardContainer">
-          {crytoList.map((cryto) => (
-            <Coin
-              key={cryto.id}
-              id={cryto.id}
-              symbol={cryto.symbol}
-              price={cryto.priceUsd.substring(0, 8)}
-            />
+          {crytoList
+            .filter((coin) => {
+              const filter = search.get('filter');
+              if (!filter) return true;
+              const name = coin.name.toLowerCase();
+              return name.startsWith(filter.toLowerCase());
+            })
+            .map((cryto) => (
+              <Coin
+                key={cryto.id}
+                id={cryto.id}
+                symbol={cryto.symbol}
+                price={cryto.priceUsd.substring(0, 8)}
+              />
           ))}
         </ul>
       </div>
