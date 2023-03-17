@@ -1,21 +1,26 @@
+import { Provider } from 'react-redux';
+import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
+import Header from './components/Header';
+import Continents from './pages/Continents';
+import store from './redux/configureStore';
 import './App.css';
-import { Routes, Route } from 'react-router-dom';
-import Layout from './components/layout';
-import City from './components/viewCities';
-import Detail from './components/viewDetails';
-import NotMatch from './components/notMatch';
+import Countries from './pages/Countries';
+import CountryDetails from './pages/CountryDetails';
 
 function App() {
   return (
-    <div>
-      <Routes>
-        <Route path="/" element={<Layout />}>
-          <Route index element={<City />} />
-          <Route path="/detail/:name/:lat/:lon" element={<Detail />} />
-          <Route path="*" element={<NotMatch />} />
-        </Route>
-      </Routes>
-    </div>
+    <Provider store={store}>
+      <Router>
+        <div className="container">
+          <Header />
+          <Routes>
+            <Route path="/" exact element={<Continents />} />
+            <Route index path="/continent" element={<Countries />} />
+            <Route index path="/country" element={<CountryDetails />} />
+          </Routes>
+        </div>
+      </Router>
+    </Provider>
   );
 }
 
